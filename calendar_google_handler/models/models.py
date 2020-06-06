@@ -1,29 +1,10 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
-
-
-# class calendar_google_handler(models.Model):
-#     _name = 'calendar_google_handler.calendar_google_handler'
-#     _description = 'calendar_google_handler.calendar_google_handler'
-
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
-
-# -*- coding: utf-8 -*-
-
+from odoo import models, fields, api
 
 class CalendarEvent(models.Model):
     _inherit = 'calendar.event'
 
-    @api.multi
     def read(self, fields=None, load='_classic_read'):
         TIME_FIELDS_IN_EVENT = ['start', 'stop',
                                 'start_datetime', 'stop_datetime']

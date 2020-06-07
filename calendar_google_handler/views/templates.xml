@@ -1,6 +1,12 @@
 <odoo>
     <data>
-<!--
+        <!--
+            =========================================================
+            The following views have been created using odoo scaffold
+            They do nothing sensible yet
+            =========================================================
+          -->
+
         <template id="listing">
           <ul>
             <li t-foreach="objects" t-as="object">
@@ -19,6 +25,17 @@
             </t>
           </dl>
         </template>
--->
+        <!--
+            =========================================================
+            The following template has been copied from google_calendar
+            However is seems not to work
+            =========================================================
+        -->
+        <template id="assets_backend_gc" name="calendar_google assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/scss" href="/calendar_google_handler/static/src/scss/calendar_google_handler.scss"/>
+                <script type="text/javascript" src="/calendar_google_handler/static/src/js/calendar_google_handler.js"></script>
+            </xpath>
+        </template>
     </data>
 </odoo>

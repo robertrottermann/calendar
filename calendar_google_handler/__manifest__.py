@@ -23,6 +23,7 @@
     'depends': [
         'base',
         'calendar',
+        'event',
     ],
 
     # always loaded

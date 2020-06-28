@@ -11,12 +11,12 @@
 
     <record model="ir.ui.view" id="calendar_google_handler.list">
       <field name="name">calendar_google_handler list</field>
-      <field name="model">calendar_google_handler.calendar_google_handler</field>
+      <field name="model">calendar_google_handler</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="google_calendar_name"/>
+          <field name="google_calendar_id"/>
+          <field name="google_calendar_link"/>
         </tree>
       </field>
     </record>
@@ -26,7 +26,7 @@
 
     <record model="ir.actions.act_window" id="calendar_google_handler.action_window">
       <field name="name">calendar_google_handler window</field>
-      <field name="res_model">calendar_google_handler.calendar_google_handler</field>
+      <field name="res_model">calendar_google_handler</field>
       <field name="view_mode">tree,form</field>
     </record>
 
@@ -35,7 +35,7 @@
 
     <record model="ir.actions.server" id="calendar_google_handler.action_server">
       <field name="name">calendar_google_handler server</field>
-      <field name="model_id" ref="model_calendar_google_handler_calendar_google_handler"/>
+      <field name="model_id" ref="model_calendar_google_handler"/>
       <field name="state">code</field>
       <field name="code">
         action = {
@@ -49,7 +49,7 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="calendar_google_handler" id="calendar_google_handler.menu_root" name="Hoppalla"/>
+    <menuitem name="Hoppalla" id="calendar_google_handler.menu_root" />
 
     <!-- menu categories -->
 
@@ -63,7 +63,7 @@
     <menuitem name="Server to list" id="calendar_google_handler" parent="calendar_google_handler.menu_2"
               action="calendar_google_handler.action_server"/>
 
-<menuitem id="menu_ideas" parent="menu_root" name="Ideas" sequence="10"
-          action="calendar_google_handler.menu_1_list"/>
+    <!-- <menuitem id="menu_ideas" parent="calendar_google_handler.menu_root" name="Ideas" sequence="10"
+          action="calendar_google_handler.menu_1_list"/> -->
   </data>
 </odoo>

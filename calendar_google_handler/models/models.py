@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import pytz
+import sys
 from datetime import datetime, timedelta
-from odoo import api, models, fields as api_fields
+from odoo import api, models, fields
 
 """
 a typical google event:
@@ -54,22 +55,25 @@ a typical google event:
 
 """
 
-from cal import get_events_for_summary, CALENDARS
+sys.path.insert(0, '.')
+from .cal import get_events_for_summary, CALENDARS
 
 class CalendarGoogleHandler(models.Model):
-    _name = 'calendar_google_handler.calendar_google_handler'
-    _description = 'calendar_google_handler.calendar_google_handler'
+    _name = 'calendar_google_handler'
+    _description = 'handle gogle canedars'
 
     _inherit = 'event.event'
 
+    name = fields.Char()
     google_calendar_name = fields.Char() # summary field of the related google calendar
     google_calendar_id   = fields.Char() # id of the realted google calendar
     google_calendar_link = fields.Char() # html link of the google event
     # an event can have an owner. Then this owner is allowed to edit it
-    owner_ids = fields.One2many(
+    event_owner_id = fields.Many2one(
+        'res.users',
         string='Event Owner',
-        comodel_name='res.users',
-        inverse_name='inverse_field',  # <---------------- please fix
+        # comodel_name='res.users',
+        # inverse_name='id',  # <---------------- please fix
     )
 
     def create_event(self, event):
@@ -85,7 +89,7 @@ class CalendarGoogleHandler(models.Model):
             and create odoo events for them
 
         Args:
-            which_one (str, optional): a comma separated list of calendars to updat. Defaults to 'all'.
+            which_one (str, optional): a comma separated list of calendars to update. Defaults to 'all'.
         """
         if which_one == 'all':
             for calendar in CALENDARS:

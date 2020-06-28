@@ -23,6 +23,7 @@ CALENDARS = [
     '7 Tagesschule',
 ]
 
+# the credential created by "click on a button in the examples :)"
 json_cred = {"installed":{"client_id":"694254662460-19semoouffjvjtb9cpn3eua5ueb8vl4s.apps.googleusercontent.com","project_id":"quickstart-1591465275497","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"v7Eq9g5nRZI6AuK5XA765j94","redirect_uris":["urn:ietf:wg:oauth:2.0:oob","http://localhost"]}}
 
 
